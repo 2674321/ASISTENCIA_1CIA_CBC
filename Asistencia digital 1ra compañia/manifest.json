@@ -1,0 +1,24 @@
+{
+  "name": "Asistencia - 1ra Compañía Bomba Chile",
+  "short_name": "Asistencia 1CIA",
+  "description": "Registro digital de asistencia a actos de servicio - Primera Compañía del Cuerpo de Bomberos de Coquimbo",
+  "start_url": "asistencia_primera_compania_v3.html",
+  "display": "standalone",
+  "background_color": "#c8c8c8",
+  "theme_color": "#c0392b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "../img-logo-1cia.jpg",
+      "sizes": "617x617",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "../LOGO%20CBC.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ]
+}
