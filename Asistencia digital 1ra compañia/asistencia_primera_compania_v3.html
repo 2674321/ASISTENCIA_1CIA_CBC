@@ -373,10 +373,19 @@
 
     const grilla1 = document.createElement('div'); grilla1.className = 'grilla';
 
-    // Col 1: Oficiales
-    grilla1.appendChild(crearColumna([
-      { titulo: 'Oficiales', clase: 'col-titulo', personas: oficiales },
-    ]));
+    // Col 1: Oficiales por subsección
+    const ordenSub = ['comandancia', 'superintendencia', 'operativa', 'administrativa'];
+    const titulosSub = {
+      'comandancia': 'Comandancia',
+      'superintendencia': 'Superintendencia',
+      'operativa': 'Operativa',
+      'administrativa': 'Administrativa'
+    };
+    const gruposOficiales = ordenSub.map(function(s) {
+      return { titulo: titulosSub[s], clase: 'subtitulo', personas: oficiales.filter(function(p) { return p.subseccion === s; }) };
+    }).filter(function(g) { return g.personas.length > 0; });
+
+    grilla1.appendChild(crearColumna(gruposOficiales));
 
     // Col 2: M.M.H.H.
     grilla1.appendChild(crearColumna([

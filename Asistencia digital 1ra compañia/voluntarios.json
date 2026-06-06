@@ -3,360 +3,420 @@
     "nombre": "Alfredo Humberto Riffo Torres",
     "cargo": "M.M.H.H.",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Gustavo Alberto Ramírez Núñez",
     "cargo": "M.M.H.H.",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Luis Ricardo Flores Cortes",
     "cargo": "M.M.H.H.",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Raúl Alfonso Vergara Miranda",
     "cargo": "M.M.H.H.",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Jorge Fernando Godoy Godoy",
     "cargo": "M.M.H.H.",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Adrián Guillermo Vilches Alfaro",
     "cargo": "M.M.H.H.",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Luis Hernán Godoy Arredondo",
     "cargo": "M.M.H.H.",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Carlos Eduardo Ruíz Benítez",
     "cargo": "M.M.H.H.",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Hayle Orlando Lucero Tapia",
     "cargo": "M.M.H.H.",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Carlos Antonio Adaros Álvarez",
     "cargo": "Teniente 1°",
     "seccion": "oficialidad",
-    "activo": true
+    "activo": true,
+    "subseccion": "operativa"
   },
   {
     "nombre": "Pablo Marcelo Astudillo Steppes",
     "cargo": "M.M.H.H.",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Enrique Luis Galaz Rubio",
     "cargo": "M.M.H.H.",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Alejandro Hernando Chepillo Flores",
     "cargo": "M.M.H.H.",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Alexis Wladimir Bugueño Alquinta",
     "cargo": "Comandante 3°",
     "seccion": "oficialidad",
-    "activo": true
+    "activo": true,
+    "subseccion": "comandancia"
   },
   {
     "nombre": "Ignacio Andrés Galleguillos Cespedes",
     "cargo": "Director(a)",
     "seccion": "oficialidad",
-    "activo": true
+    "activo": true,
+    "subseccion": "operativa"
   },
   {
     "nombre": "Alejandro Fermín Santana Molina",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Mario Alberto Terrazas Rojas",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Álvaro Rubén Varela Cruz",
     "cargo": "Capitán",
     "seccion": "oficialidad",
-    "activo": true
+    "activo": true,
+    "subseccion": "operativa"
   },
   {
     "nombre": "Aliro Edgardo Albanez Moreno",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Raúl Alberto Rodríguez Pizarro",
     "cargo": "Maquinista de Compañía",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Felipe Andrés Vivanco Gallardo",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Oscar Andrés Alvarez Parra",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Patricio Javier Romero Martinez",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Patricio Valentín Retamales López",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Yanira Andrea Maluenda Toro",
     "cargo": "Vice Superintendente",
     "seccion": "oficialidad",
-    "activo": true
+    "activo": true,
+    "subseccion": "superintendencia"
   },
   {
     "nombre": "Fernanda Ignacia Santana Contreras",
     "cargo": "Secretario(a)",
     "seccion": "oficialidad",
-    "activo": true
+    "activo": true,
+    "subseccion": "operativa"
   },
   {
     "nombre": "Matías Andrés Núñez Álvarez",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Cristián Rodrigo Silva Toro",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Cristian Roberto Cortes Plaza",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Tomás Maximiliano Morales Sánchez",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Víctor Alejandro Araya Gonzalez",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Bárbara Paz Sierpe Robinson",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Marcelo Orlando Muranda Toledo",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Aymará María Segura Díaz",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Cristóbal Ignacio Ramírez Barraza",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Emmanuel Francisco José Jopia Lopez",
     "cargo": "Inspector Material Menor",
     "seccion": "oficialidad",
-    "activo": true
+    "activo": true,
+    "subseccion": "operativa"
   },
   {
     "nombre": "Lucky George Montecinos Zepeda",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Karla Inzunza Castillo",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Renato Paolo Rodríguez Meza",
     "cargo": "Teniente 3°",
     "seccion": "oficialidad",
-    "activo": true
+    "activo": true,
+    "subseccion": "operativa"
   },
   {
     "nombre": "Jubitza Alessandra Albanez Moreno",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Jorge Jose Vera Oviedo",
     "cargo": "Teniente 2°",
     "seccion": "oficialidad",
-    "activo": true
+    "activo": true,
+    "subseccion": "operativa"
   },
   {
     "nombre": "Mikaela de los Angeles Millaray Silva Castro",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Patricio Andrés Varela Contreras",
     "cargo": "Ayudante",
     "seccion": "oficialidad",
-    "activo": true
+    "activo": true,
+    "subseccion": "operativa"
   },
   {
     "nombre": "Ian Franco Duque Molina",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Franco Rangel Quezada",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Carlos Andrés Hernández Gutiérrez",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Francisca Maritza Aguirre Mestre",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Luis Henan Yaeger Gonzalez",
     "cargo": "Aspirante",
     "seccion": "aspirantes",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Cristobal Antonio Gamboa Arriagada",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Nicolas García Jurado",
     "cargo": "Aspirante",
     "seccion": "aspirantes",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Pilar Angélica Aracena Pizarro",
     "cargo": "Tesorero(a)",
     "seccion": "oficialidad",
-    "activo": true
+    "activo": true,
+    "subseccion": "operativa"
   },
   {
     "nombre": "Constanza Andrea Adaros Silva",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Javiera Alejandra Adaros Silva",
     "cargo": "Aspirante",
     "seccion": "aspirantes",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Arlett Isabella Adaros Silva",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Fabiola Andrea Aguilera Marin",
     "cargo": "Aspirante",
     "seccion": "aspirantes",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Paula Marisol Saavedra Verasay",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Felipe Antonio Melo Montano",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Luisa Maria Campo Giraldo",
     "cargo": "Aspirante",
     "seccion": "aspirantes",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Patricio Jesús López Brajovie",
     "cargo": "Aspirante",
     "seccion": "aspirantes",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   },
   {
     "nombre": "Valentina Campo Giraldo",
     "cargo": "Aspirante",
     "seccion": "aspirantes",
-    "activo": true
+    "activo": true,
+    "subseccion": ""
   }
 ]
