@@ -39,7 +39,7 @@
       min-height: 297mm;
       background: #fff;
       margin: 18px auto;
-      padding: 5mm 7mm 6mm;
+      padding: 5mm 6mm 6mm;
       box-shadow: 0 6px 28px rgba(0,0,0,.22);
       display: flex;
       flex-direction: column;
@@ -255,18 +255,21 @@
        ESTILOS DE IMPRESIÓN
     ══════════════════════════ */
     @media print {
-      @page { margin: 5mm; size: A4; }
+      @page { margin: 0; size: A4; }
       body { background: white; }
-      .page { width: 100%; max-width: none; margin: 0; box-shadow: none; min-height: 0; height: auto; padding-bottom: 16mm; }
-      .page-footer {
-        position: fixed;
-        bottom: 3mm;
-        left: 8mm;
-        right: 8mm;
-        background: white;
+      .page {
+        display: block; width: auto; max-width: none;
+        margin: 0; box-shadow: none;
+        min-height: 0; height: auto;
+        padding: 4mm 6mm 16mm;
       }
-      .page-content { flex: none; }
+      .page-content { display: block; }
+      .page-footer {
+        position: fixed; bottom: 2mm; left: 6mm; right: 6mm;
+        background: white; margin-top: 0;
+      }
       .no-print { display: none !important; }
+      .grilla { gap: 0 6px; }
 
       .campo input[type="text"], .campo input[type="date"] {
         border-bottom: 1px solid #999 !important;
