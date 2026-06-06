@@ -1,4 +1,4 @@
-const CACHE = 'asistencia-1cia-v3';
+const CACHE = 'asistencia-1cia-v4';
 const STATIC = [
   'manifest.json',
   '../img-logo-1cia.jpg',
@@ -7,8 +7,12 @@ const STATIC = [
 
 self.addEventListener('install', function(e) {
   e.waitUntil(
-    caches.open(CACHE).then(function(cache) {
-      return cache.addAll(STATIC);
+    caches.keys().then(function(keys) {
+      return Promise.all(keys.map(function(k) { return caches.delete(k); }));
+    }).then(function() {
+      return caches.open(CACHE).then(function(cache) {
+        return cache.addAll(STATIC);
+      });
     })
   );
   self.skipWaiting();
@@ -16,13 +20,12 @@ self.addEventListener('install', function(e) {
 
 self.addEventListener('activate', function(e) {
   e.waitUntil(
-    caches.keys().then(function(keys) {
-      return Promise.all(
-        keys.filter(function(k) { return k !== CACHE; }).map(function(k) { return caches.delete(k); })
-      );
+    self.clients.claim().then(function() {
+      return self.clients.matchAll({ type: 'window' }).then(function(clients) {
+        clients.forEach(function(client) { client.navigate(client.url); });
+      });
     })
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', function(e) {

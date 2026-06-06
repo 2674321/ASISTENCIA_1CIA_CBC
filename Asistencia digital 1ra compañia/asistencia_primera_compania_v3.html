@@ -502,11 +502,11 @@
     });
 
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js?' + Date.now()).then(function(reg) {
+      navigator.serviceWorker.register('sw.js').then(function(reg) {
         if (reg.waiting) location.reload();
         reg.onupdatefound = function() {
           var installing = reg.installing;
-          installing.onstatechange = function() {
+          if (installing) installing.onstatechange = function() {
             if (installing.state === 'installed' && navigator.serviceWorker.controller) {
               location.reload();
             }
