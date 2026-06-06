@@ -119,12 +119,6 @@
       margin-bottom: 7px;
     }
     .columna { display: flex; flex-direction: column; }
-    .grilla-single {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0 12px;
-      margin-bottom: 7px;
-    }
     .col-titulo {
       font-weight: 700; font-size: 10.5px;
       color: var(--rojo);
@@ -396,7 +390,7 @@
     const container = document.getElementById('asistencia-container');
     container.innerHTML = '';
 
-    const grilla1 = document.createElement('div'); grilla1.className = 'grilla';
+    const grilla = document.createElement('div'); grilla.className = 'grilla';
 
     // Col 1: Oficiales - título "Oficialidad", luego sueltos y subsecciones
     const sueltos = oficiales.filter(function(p) { return !p.subseccion || p.subseccion === ''; });
@@ -408,37 +402,30 @@
         gruposOficiales.push({ titulo: s.charAt(0).toUpperCase() + s.slice(1), clase: 'subtitulo', personas: personas });
       }
     });
+    grilla.appendChild(crearColumna(gruposOficiales));
 
-    grilla1.appendChild(crearColumna(gruposOficiales));
-
-    // Col 2: M.M.H.H.
-    grilla1.appendChild(crearColumna([
-      { titulo: 'M.M.H.H.', clase: 'col-titulo', personas: mmhh },
-    ]));
-
-    // Col 3: Voluntarios (primera parte)
+    // Col 2: M.M.H.H. + primera mitad de Voluntarios
     const mitad = Math.ceil(voluntas.length / 2);
-    grilla1.appendChild(crearColumna([
-      { titulo: 'Voluntarios', clase: 'col-titulo', personas: voluntas.slice(0, mitad) },
-    ]));
-
-    container.appendChild(grilla1);
-
-    // Segunda grilla: Voluntarios restantes + Aspirantes juntos en misma columna
-    const restante = voluntas.slice(mitad);
-    if (restante.length > 0 || aspirantes.length > 0) {
-      const grilla2 = document.createElement('div'); grilla2.className = 'grilla-single';
-      const grupos = [];
-      if (restante.length > 0) {
-        grupos.push({ titulo: 'Voluntarios', clase: 'subtitulo-cont', personas: restante });
-      }
-      if (aspirantes.length > 0) {
-        grupos.push({ titulo: 'Aspirantes', clase: 'subtitulo', personas: aspirantes });
-      }
-      grilla2.appendChild(crearColumna(grupos));
-      container.appendChild(grilla2);
+    const gruposCol2 = [
+      { titulo: 'M.M.H.H.', clase: 'col-titulo', personas: mmhh },
+    ];
+    if (voluntas.length > 0) {
+      gruposCol2.push({ titulo: 'Voluntarios', clase: 'col-titulo', personas: voluntas.slice(0, mitad) });
     }
+    grilla.appendChild(crearColumna(gruposCol2));
 
+    // Col 3: Voluntarios restantes + Aspirantes
+    const restante = voluntas.slice(mitad);
+    const gruposCol3 = [];
+    if (restante.length > 0) {
+      gruposCol3.push({ titulo: 'Voluntarios', clase: 'col-titulo', personas: restante });
+    }
+    if (aspirantes.length > 0) {
+      gruposCol3.push({ titulo: 'Aspirantes', clase: 'col-titulo', personas: aspirantes });
+    }
+    grilla.appendChild(crearColumna(gruposCol3));
+
+    container.appendChild(grilla);
     actualizarTotales();
   }
 
