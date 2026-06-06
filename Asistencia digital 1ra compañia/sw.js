@@ -1,4 +1,4 @@
-const CACHE = 'asistencia-1cia-v2';
+const CACHE = 'asistencia-1cia-v3';
 const STATIC = [
   'manifest.json',
   '../img-logo-1cia.jpg',

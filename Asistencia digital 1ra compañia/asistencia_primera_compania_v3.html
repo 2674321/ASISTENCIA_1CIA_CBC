@@ -21,7 +21,7 @@
       --gris:  #2c2c2c;
       --linea: #999;
       --borde: #ccc;
-      --check: 13px;
+      --check: 11px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,7 +39,7 @@
       min-height: 297mm;
       background: #fff;
       margin: 18px auto;
-      padding: 6mm 8mm 8mm;
+      padding: 5mm 7mm 6mm;
       box-shadow: 0 6px 28px rgba(0,0,0,.22);
       display: flex;
       flex-direction: column;
@@ -59,30 +59,30 @@
     .header-center {
       border: 1.5px solid var(--gris);
       text-align: center;
-      padding: 8px 12px;
+      padding: 5px 10px;
     }
-    .header-center p { font-size: 11.5px; line-height: 1.7; }
+    .header-center p { font-size: 11px; line-height: 1.6; }
 
     /* ── Banda tricolor ── */
     .banda {
-      height: 5px;
+      height: 4px;
       background: linear-gradient(90deg, var(--azul) 0%, var(--rojo) 50%, var(--azul) 100%);
-      margin: 8px 0 9px;
+      margin: 5px 0 6px;
       border-radius: 2px;
     }
 
     /* ── Título ── */
     .titulo {
       font-family: 'EB Garamond', serif;
-      font-size: 19px; font-weight: 700;
+      font-size: 17px; font-weight: 700;
       text-align: center;
       letter-spacing: .4px;
-      margin-bottom: 9px;
+      margin-bottom: 6px;
     }
 
     /* ── Campos editables ── */
-    .campos-top { display: flex; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
-    .campos-bot { display: flex; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+    .campos-top { display: flex; gap: 12px; margin-bottom: 2px; flex-wrap: wrap; }
+    .campos-bot { display: flex; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
     .campo { display: flex; align-items: flex-end; gap: 4px; flex: 1; min-width: 80px; }
     .campo label { font-weight: 600; white-space: nowrap; font-size: 10px; }
 
@@ -107,11 +107,11 @@
     /* ── Sección título ── */
     .seccion-titulo {
       font-family: 'EB Garamond', serif;
-      font-size: 13px; font-weight: 700;
+      font-size: 12px; font-weight: 700;
       text-align: center;
-      margin-bottom: 7px;
+      margin-bottom: 5px;
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-underline-offset: 2px;
     }
 
     /* ── Grilla 4 columnas ── */
@@ -123,31 +123,31 @@
     }
     .columna { display: flex; flex-direction: column; }
     .col-titulo {
-      font-weight: 700; font-size: 10.5px;
+      font-weight: 700; font-size: 9.5px;
       color: var(--rojo);
       border-bottom: 1.5px solid var(--rojo);
-      padding-bottom: 2px; margin-bottom: 3px;
+      padding-bottom: 2px; margin-bottom: 2px;
     }
     .subtitulo {
-      font-weight: 700; font-size: 9.5px;
+      font-weight: 700; font-size: 9px;
       color: var(--rojo);
-      margin-top: 6px; margin-bottom: 3px;
+      margin-top: 4px; margin-bottom: 2px;
     }
     .subtitulo-cont {
-      font-weight: 700; font-size: 9.5px;
+      font-weight: 700; font-size: 9px;
       color: var(--azul);
       border-bottom: 1px solid #ddd;
-      padding-bottom: 2px; margin-bottom: 3px;
+      padding-bottom: 2px; margin-bottom: 2px;
     }
 
     /* ── Fila integrante ── */
     .fila {
       display: flex; align-items: center;
-      gap: 4px; padding: 5px 0;
+      gap: 4px; padding: 3px 0;
       border-bottom: .5px solid #efefef;
     }
     .fila:last-child { border-bottom: none; }
-    .nombre { font-size: 10px; line-height: 1.25; }
+    .nombre { font-size: 9.5px; line-height: 1.2; }
 
     /* ── Marcador clicable (div) ── */
     .fila .cb {
@@ -179,10 +179,10 @@
     /* ── Totales ── */
     .totales-area {
       border-top: 1.5px solid var(--gris);
-      margin-top: 8px; padding-top: 7px;
+      margin-top: 5px; padding-top: 5px;
       display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
     }
-    .totales-box .tit { font-weight: 700; font-size: 10.5px; margin-bottom: 3px; }
+    .totales-box .tit { font-weight: 700; font-size: 10px; margin-bottom: 2px; }
     .fila-total { display: flex; align-items: center; gap: 6px; font-size: 10px; padding: 2px 0; }
     .total-num {
       display: inline-block;
@@ -196,16 +196,16 @@
     /* ── Firma ── */
     .firma-area {
       display: flex; flex-direction: column;
-      align-items: center; margin-top: 10px;
+      align-items: center; margin-top: 6px;
     }
-    .firma-linea { width: 160px; border-top: 1px solid var(--gris); margin-bottom: 3px; }
-    .firma-label { font-size: 10px; font-weight: 600; }
+    .firma-linea { width: 140px; border-top: 1px solid var(--gris); margin-bottom: 2px; }
+    .firma-label { font-size: 9px; font-weight: 600; }
 
     /* ── Leyenda ── */
     .leyenda {
       display: flex; gap: 20px;
-      margin-top: 9px; font-size: 9px; color: #555;
-      border-top: 1px solid var(--borde); padding-top: 5px;
+      margin-top: 5px; font-size: 8.5px; color: #555;
+      border-top: 1px solid var(--borde); padding-top: 4px;
     }
 
     /* ── Botones ── */
@@ -498,7 +498,20 @@
     });
 
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
+      navigator.serviceWorker.register('sw.js?' + Date.now()).then(function(reg) {
+        if (reg.waiting) location.reload();
+        reg.onupdatefound = function() {
+          var installing = reg.installing;
+          installing.onstatechange = function() {
+            if (installing.state === 'installed' && navigator.serviceWorker.controller) {
+              location.reload();
+            }
+          };
+        };
+      });
+      navigator.serviceWorker.addEventListener('controllerchange', function() {
+        location.reload();
+      });
     }
   });
 
