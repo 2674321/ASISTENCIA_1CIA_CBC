@@ -255,9 +255,9 @@
        ESTILOS DE IMPRESIÓN
     ══════════════════════════ */
     @media print {
-      @page { margin: 3mm; size: A4; }
+      @page { margin: 5mm; size: A4; }
       body { background: white; }
-      .page { width: 100%; max-width: none; margin: 0; box-shadow: none; padding-bottom: 26mm; }
+      .page { width: 100%; max-width: none; margin: 0; box-shadow: none; min-height: 0; height: auto; padding-bottom: 16mm; }
       .page-footer {
         position: fixed;
         bottom: 3mm;
@@ -265,6 +265,7 @@
         right: 8mm;
         background: white;
       }
+      .page-content { flex: none; }
       .no-print { display: none !important; }
 
       .campo input[type="text"], .campo input[type="date"] {
@@ -272,7 +273,7 @@
         background: transparent !important;
       }
 
-      .fila input[type="checkbox"] {
+      .fila .cb {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
