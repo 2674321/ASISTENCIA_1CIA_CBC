@@ -119,6 +119,12 @@
       margin-bottom: 7px;
     }
     .columna { display: flex; flex-direction: column; }
+    .grilla-single {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0 12px;
+      margin-bottom: 7px;
+    }
     .col-titulo {
       font-weight: 700; font-size: 10.5px;
       color: var(--rojo);
@@ -418,34 +424,18 @@
 
     container.appendChild(grilla1);
 
-    // Segunda grilla: Voluntarios restantes + Aspirantes (sin columna vacía)
+    // Segunda grilla: Voluntarios restantes + Aspirantes juntos en misma columna
     const restante = voluntas.slice(mitad);
     if (restante.length > 0 || aspirantes.length > 0) {
-      const grilla2 = document.createElement('div'); grilla2.className = 'grilla';
-
-      // Col 1: Voluntarios restantes
-      grilla2.appendChild(crearColumna([
-        { titulo: 'Voluntarios', clase: 'subtitulo-cont', personas: restante },
-      ]));
-
-      // Col 2: Aspirantes (usando la columna que estaba vacía)
+      const grilla2 = document.createElement('div'); grilla2.className = 'grilla-single';
+      const grupos = [];
+      if (restante.length > 0) {
+        grupos.push({ titulo: 'Voluntarios', clase: 'subtitulo-cont', personas: restante });
+      }
       if (aspirantes.length > 0) {
-        grilla2.appendChild(crearColumna([
-          { titulo: 'Aspirantes', clase: 'subtitulo', personas: aspirantes },
-        ]));
-      } else {
-        grilla2.appendChild(crearColumna([
-          { titulo: '', clase: 'subtitulo-cont', personas: [] },
-        ]));
+        grupos.push({ titulo: 'Aspirantes', clase: 'subtitulo', personas: aspirantes });
       }
-
-      // Col 3: vacía solo si no hay aspirantes
-      if (aspirantes.length === 0) {
-        grilla2.appendChild(crearColumna([
-          { titulo: '', clase: 'subtitulo-cont', personas: [] },
-        ]));
-      }
-
+      grilla2.appendChild(crearColumna(grupos));
       container.appendChild(grilla2);
     }
 

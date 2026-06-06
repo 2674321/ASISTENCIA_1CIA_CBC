@@ -325,14 +325,14 @@
     "nombre": "Francisca Maritza Aguirre Mestre",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true,
+    "activo": false,
     "subseccion": ""
   },
   {
     "nombre": "Luis Henan Yaeger Gonzalez",
     "cargo": "Aspirante",
     "seccion": "aspirantes",
-    "activo": true,
+    "activo": false,
     "subseccion": ""
   },
   {
