@@ -102,7 +102,7 @@
     "cargo": "Director(a)",
     "seccion": "oficialidad",
     "activo": true,
-    "subseccion": "operativa"
+    "subseccion": "administrativa"
   },
   {
     "nombre": "Alejandro Fermín Santana Molina",
@@ -179,7 +179,7 @@
     "cargo": "Secretario(a)",
     "seccion": "oficialidad",
     "activo": true,
-    "subseccion": "operativa"
+    "subseccion": "administrativa"
   },
   {
     "nombre": "Matías Andrés Núñez Álvarez",
@@ -354,7 +354,7 @@
     "cargo": "Tesorero(a)",
     "seccion": "oficialidad",
     "activo": true,
-    "subseccion": "operativa"
+    "subseccion": "administrativa"
   },
   {
     "nombre": "Constanza Andrea Adaros Silva",
