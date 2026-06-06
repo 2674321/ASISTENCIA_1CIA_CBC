@@ -374,13 +374,13 @@
     const grilla1 = document.createElement('div'); grilla1.className = 'grilla';
 
     // Col 1: Oficiales - primero sueltos, luego subsecciones
-    const sueltos = oficiales.filter(function(p) { return !p.subseccion; });
+    const sueltos = oficiales.filter(function(p) { return !p.subseccion || p.subseccion === ''; });
     const gruposOficiales = [];
     if (sueltos.length > 0) {
       gruposOficiales.push({ titulo: '', clase: 'col-titulo', personas: sueltos });
     }
     ['operativa', 'administrativa'].forEach(function(s) {
-      const personas = oficiales.filter(function(p) { return p.subseccion === s; });
+      const personas = oficiales.filter(function(p) { return (p.subseccion || '') === s; });
       if (personas.length > 0) {
         gruposOficiales.push({ titulo: s.charAt(0).toUpperCase() + s.slice(1), clase: 'subtitulo', personas: personas });
       }
