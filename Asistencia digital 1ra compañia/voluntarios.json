@@ -95,7 +95,7 @@
     "cargo": "Comandante 3°",
     "seccion": "oficialidad",
     "activo": true,
-    "subseccion": "comandancia"
+    "subseccion": ""
   },
   {
     "nombre": "Ignacio Andrés Galleguillos Cespedes",
@@ -172,7 +172,7 @@
     "cargo": "Vice Superintendente",
     "seccion": "oficialidad",
     "activo": true,
-    "subseccion": "superintendencia"
+    "subseccion": ""
   },
   {
     "nombre": "Fernanda Ignacia Santana Contreras",
