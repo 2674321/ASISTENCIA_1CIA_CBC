@@ -435,8 +435,8 @@
         const fila = document.createElement('div'); fila.className = 'fila';
         const cb = document.createElement('div'); cb.className = 'cb'; cb.dataset.estado = '0';
         const nom = document.createElement('span'); nom.className = 'nombre';
-        if (p.seccion === 'oficialidad' || p.cargo === 'Maquinista de Compañía' || p.cargo === 'Inspector Material Menor') {
-          nom.textContent = p.cargo + ': ' + p.nombre;
+        if (p.cargo && p.cargo !== 'Voluntario') {
+          nom.innerHTML = '<strong>' + p.cargo + '</strong> - ' + p.nombre;
         } else {
           nom.textContent = p.nombre;
         }
