@@ -6,6 +6,9 @@
   <meta name="theme-color" content="#c0392b"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
   <link rel="manifest" href="manifest.json"/>
   <link rel="apple-touch-icon" href="../img-logo-1cia.jpg"/>
   <title>Asistencia – Primera Compañía Bomba Chile</title>
@@ -111,11 +114,11 @@
       text-underline-offset: 3px;
     }
 
-    /* ── Grilla 3 columnas ── */
+    /* ── Grilla 4 columnas ── */
     .grilla {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0 12px;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 0 10px;
       margin-bottom: 7px;
     }
     .columna { display: flex; flex-direction: column; }
@@ -404,26 +407,25 @@
     });
     grilla.appendChild(crearColumna(gruposOficiales));
 
-    // Col 2: M.M.H.H. + primera mitad de Voluntarios
-    const mitad = Math.ceil(voluntas.length / 2);
-    const gruposCol2 = [
+    // Col 2: M.M.H.H.
+    grilla.appendChild(crearColumna([
       { titulo: 'M.M.H.H.', clase: 'col-titulo', personas: mmhh },
-    ];
-    if (voluntas.length > 0) {
-      gruposCol2.push({ titulo: 'Voluntarios', clase: 'col-titulo', personas: voluntas.slice(0, mitad) });
-    }
-    grilla.appendChild(crearColumna(gruposCol2));
+    ]));
 
-    // Col 3: Voluntarios restantes + Aspirantes
-    const restante = voluntas.slice(mitad);
-    const gruposCol3 = [];
-    if (restante.length > 0) {
-      gruposCol3.push({ titulo: 'Voluntarios', clase: 'col-titulo', personas: restante });
-    }
+    // Col 3: Voluntarios (primera mitad)
+    const mitad = Math.ceil(voluntas.length / 2);
+    grilla.appendChild(crearColumna([
+      { titulo: 'Voluntarios', clase: 'col-titulo', personas: voluntas.slice(0, mitad) },
+    ]));
+
+    // Col 4: Voluntarios (segunda mitad) + Aspirantes
+    const gruposCol4 = [
+      { titulo: 'Voluntarios', clase: 'col-titulo', personas: voluntas.slice(mitad) },
+    ];
     if (aspirantes.length > 0) {
-      gruposCol3.push({ titulo: 'Aspirantes', clase: 'col-titulo', personas: aspirantes });
+      gruposCol4.push({ titulo: 'Aspirantes', clase: 'col-titulo', personas: aspirantes });
     }
-    grilla.appendChild(crearColumna(gruposCol3));
+    grilla.appendChild(crearColumna(gruposCol4));
 
     container.appendChild(grilla);
     actualizarTotales();
