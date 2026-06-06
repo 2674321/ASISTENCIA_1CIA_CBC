@@ -224,7 +224,7 @@
        RESPONSIVE
     ══════════════════════════ */
     @media screen and (max-width: 820px) {
-      .page { padding: 6mm 6mm 22mm; margin: 10px auto; }
+      .page { padding: 6mm 6mm 8mm; margin: 10px auto; }
       .grilla { grid-template-columns: 1fr 1fr; gap: 0 10px; }
       .header { grid-template-columns: 46px 1fr 46px; }
       .logo-img { width: 46px; height: 46px; }
@@ -234,7 +234,7 @@
 
     @media screen and (max-width: 540px) {
       body { background: #fff; }
-      .page { padding: 4mm 4mm 20mm; margin: 0; box-shadow: none; min-height: 100vh; }
+      .page { padding: 4mm 4mm 6mm; margin: 0; box-shadow: none; min-height: 100vh; }
       .grilla { grid-template-columns: 1fr; gap: 0; }
       .header { grid-template-columns: 40px 1fr 40px; gap: 6px; }
       .logo-img { width: 40px; height: 40px; }
@@ -252,9 +252,17 @@
        ESTILOS DE IMPRESIÓN
     ══════════════════════════ */
     @media print {
-      @page { margin: 0; size: A4; }
+      @page { margin: 3mm; size: A4; }
       body { background: white; }
       .page { width: 100%; max-width: none; margin: 0; box-shadow: none; height: 297mm; }
+      .page-footer {
+        position: fixed;
+        bottom: 3mm;
+        left: 0;
+        right: 0;
+        padding: 0 8mm;
+        background: white;
+      }
       .no-print { display: none !important; }
 
       .campo input[type="text"], .campo input[type="date"] {
@@ -319,6 +327,10 @@
     <p style="text-align:center;font-size:12px;padding:12px">Cargando listado de voluntarios…</p>
   </div>
 
+  </div><!-- /page-content -->
+
+  <div class="page-footer">
+
   <!-- TOTALES -->
   <div class="totales-area">
     <div class="totales-box">
@@ -332,12 +344,7 @@
         <span>Permisos</span>
       </div>
     </div>
-
     </div>
-
-  </div><!-- /page-content -->
-
-  <div class="page-footer">
 
   <!-- FIRMA -->
   <div class="firma-area">
