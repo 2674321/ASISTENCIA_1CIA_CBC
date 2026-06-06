@@ -254,13 +254,12 @@
     @media print {
       @page { margin: 3mm; size: A4; }
       body { background: white; }
-      .page { width: 100%; max-width: none; margin: 0; box-shadow: none; height: 297mm; }
+      .page { width: 100%; max-width: none; margin: 0; box-shadow: none; padding-bottom: 26mm; }
       .page-footer {
         position: fixed;
         bottom: 3mm;
-        left: 0;
-        right: 0;
-        padding: 0 8mm;
+        left: 8mm;
+        right: 8mm;
         background: white;
       }
       .no-print { display: none !important; }
