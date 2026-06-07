@@ -301,6 +301,8 @@
       .totales-area { gap: 16px; }
     }
 
+    .print-only { display: none; }
+
     /* ══════════════════════════
        ESTILOS DE IMPRESIÓN
     ══════════════════════════ */
@@ -338,6 +340,9 @@
 
       #firma-canvas { width: 160px; height: 18px; border: none; }
       #firma-canvas, .firma-linea { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+      #acto { display: none; }
+      #acto-print-val { display: inline !important; font-size: 10px; color: var(--gris); }
     }
   </style>
 </head>
@@ -369,7 +374,7 @@
 
   <!-- CAMPOS -->
   <div class="campos-top">
-    <div class="campo"><label>Acto:</label><select id="acto"><option value="">—</option></select></div>
+    <div class="campo"><label>Acto:</label><select id="acto"><option value="">—</option></select><span id="acto-print-val" class="print-only"></span></div>
     <div class="campo"><label>Correlativo:</label><input type="text" id="corr" placeholder="______"/></div>
     <div class="campo"><label>Unidad:</label><input type="text" id="unidad" list="unidad-list" placeholder="J-1, RX-1, B-1…"/><datalist id="unidad-list"><option value="J-1"><option value="RX-1"><option value="B-1"></datalist></div>
     <div class="campo"><label>Fecha:</label><input type="date" id="fecha"/></div>
@@ -679,7 +684,7 @@
           var parts = s.split('|');
           var opt = document.createElement('option');
           opt.value = parts[0];
-          opt.textContent = parts[0];
+          opt.textContent = parts[0] + (parts[1] ? ' — ' + parts[1] : '');
           if (parts[1]) opt.title = parts[1];
           grp.appendChild(opt);
         });
@@ -794,6 +799,11 @@
     });
 
     llenarActoList();
+    var actoEl = document.getElementById('acto');
+    actoEl.addEventListener('change', function() {
+      document.getElementById('acto-print-val').textContent = this.value || '';
+    });
+    actoEl.dispatchEvent(new Event('change'));
 
     document.getElementById('firma-label').addEventListener('click', abrirPanelFirma);
 
