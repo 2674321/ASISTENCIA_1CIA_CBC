@@ -248,6 +248,7 @@
     }
     .firma-linea { width: 160px; border-top: 1px solid var(--gris); margin-bottom: 2px; }
     .firma-label { font-size: 9px; font-weight: 600; }
+    #firma-canvas { display: block; width: 160px; height: 18px; margin-bottom: 1px; }
 
     /* ── Leyenda ── */
     .leyenda {
@@ -333,6 +334,9 @@
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
+
+      #firma-canvas { width: 160px; height: 18px; border: none; }
+      #firma-canvas, .firma-linea { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
   </style>
 </head>
@@ -402,6 +406,7 @@
 
   <!-- FIRMA -->
   <div class="firma-area">
+    <canvas id="firma-canvas" width="320" height="36"></canvas>
     <div class="firma-linea"></div>
     <div class="firma-label" id="firma-label" style="cursor:pointer">Firma OBAC</div>
   </div>
@@ -564,6 +569,9 @@
   }
 
   function aceptarFirma() {
+    var src = document.getElementById('canvas-firma-draw');
+    var dst = document.getElementById('firma-canvas');
+    dst.getContext('2d').drawImage(src, 0, 0, dst.width, dst.height);
     cerrarPanelFirma();
   }
 
