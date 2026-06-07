@@ -112,9 +112,6 @@
       min-width: 60px;
       cursor: pointer;
     }
-    #acto-container select { min-width: 0; }
-    #acto-container #acto { flex: 2; }
-    #acto-container #acto-sub { flex: 3; }
     .campo input[type="text"]:focus, .campo input[type="date"]:focus, .campo select:focus {
       border-bottom: 1.5px solid var(--azul);
       background: #f0f4ff;
@@ -372,7 +369,7 @@
 
   <!-- CAMPOS -->
   <div class="campos-top">
-    <div class="campo" id="acto-container"><label>Acto:</label><select id="acto"><option value="">—</option></select><select id="acto-sub" style="display:none;min-width:80px"><option value="">—</option></select></div>
+    <div class="campo"><label>Acto:</label><select id="acto"><option value="">—</option></select></div>
     <div class="campo"><label>Correlativo:</label><input type="text" id="corr" placeholder="______"/></div>
     <div class="campo"><label>Unidad:</label><input type="text" id="unidad" list="unidad-list" placeholder="J-1, RX-1, B-1…"/><datalist id="unidad-list"><option value="J-1"><option value="RX-1"><option value="B-1"></datalist></div>
     <div class="campo"><label>Fecha:</label><input type="date" id="fecha"/></div>
@@ -546,63 +543,153 @@
   const actosData = {
     "Academia": null,
     "10-0 (Incendio estructural)": [
-      ["10-0-1", "Fuego en casa habitación, fábrica, bodega, local comercial o lugar de gran afluencia de público fuera de su horario de funcionamiento, hasta 3 pisos"],
-      ["10-0-2", "Fuego en cualquier inmueble que posea 4 pisos o más (incendio en altura)"],
-      ["10-0-3", "Fuego en centros de gran afluencia de público en horario de funcionamiento (cines, colegios, universidades, mall, supermercados, edificios públicos, centros de salud)"],
-      ["10-0-4", "Fuego en construcciones de material ligero, poblaciones, campamentos, mejoras con peligro de propagación y/o zonas conflictivas"],
-      ["10-0-5", "Fuego en industrias químicas, depósitos de combustibles, hazmat y/o gas, polvorines, subestación eléctrica"],
-      ["10-0-6", "Amago de incendio y/o inflamación"],
-      ["10-0-7", "Desprendimiento de humo en estructura"]
+      "10-0-1|FUEGO EN CASA HABITACION, FABRICA, BODEGA, LOCAL COMERCIAL O LUGAR DE GRAN AFLUECIA DE PUBLICO FUERA DE SU HORARIO DE FUNCIONAMIENTO, HASTA 3 PISOS",
+      "10-0-2|FUEGO EN CUALQUIER INMUEBLE QUE POSEA 4 PISOS O MAS NO IMPORTADO EL PISO EN QUE SE ENCUENTRE EL FUEGO (INCENDIO EN ALTURA)",
+      "10-0-3|FUEGO EN CENTROS DE GRAN AFLUENCIA DE PUBLICO EN HORARIO DE FUNCIONAMIENTO (CINES, COLEGIOS, UNIVERSIDADES, MALL, SUPERMERCADOS, EDIFICIOS PUBLICOS, CENTROS DE SALUD, ENTRE OTROS)",
+      "10-0-4|FUEGO EN CONSTRUCCIONES DE MATERIAL LIGERO, POBLACIONES, CAMPAMENTOS, MEJORAS CON PELIGRO DE PROPAGACION Y/O ZONAS CONFLICTIVAS",
+      "10-0-5|FUEGO EN INDUSTRIAS QUIMICAS, DEPOSITOS DE COMBUSTIBLES, HAZMAT Y/O GAS, POLVORINES, SUBESTACION ELECTRICA",
+      "10-0-6|AMAGO DE INCENDIO Y/O INFLAMACION",
+      "10-0-7|DESPRENDIMIENTO DE HUMO EN ESTRUCTURA"
     ],
     "10-1 (Incendio vehicular)": [
-      ["10-1-1", "Fuego en vehículo particular, motocicleta, locomoción colectiva menor (taxi o colectivo)"],
-      ["10-1-2", "Fuego en locomoción colectiva mayor (micro) o vehículo transporte escolar"],
-      ["10-1-3", "Fuego en bus de pasajeros / camión de carga mayor/menor / maquinaria"],
-      ["10-1-4", "Fuego en vehículo de combustible o hazmat"]
+      "10-1-1|FUEGO EN VEHICULO PARTICULAR, MOTOCICLETA, VEHICULO TRANSPORTE LOCOMOCION COLECTIVA MENOR (TAXI O COLECTIVO)",
+      "10-1-2|FUEGO EN VEHICULO TRANSPORTE LOCOMOCION COLECTIVA MAYOR (MICRO BUSES) O VEHICULO TRANSPORTE ESCOLAR",
+      "10-1-3|FUEGO EN BUS DE PASAJEROS / CAMION DE CARGA MAYOR/MENOR / MAQUINARIA",
+      "10-1-4|FUEGO EN VEHICULO DE COMBUSTIBLE O HAZMAT"
     ],
     "10-2 (Fuego en pastizal y/o basura)": [
-      ["10-2-1", "Fuego en pastizal y/o basura dentro del radio urbano"],
-      ["10-2-2", "Fuego en pastizal y/o basura con amplia vegetación"],
-      ["10-2-3", "Fuego en pastizal y/o basura en zona rural"],
-      ["10-2-4", "Fuego en pastizal y/o basura en vertedero o relleno sanitario"],
-      ["10-2-5", "Fuego en acopio de neumáticos"]
-    ]
+      "10-2-1|FUEGO EN PASTIZAL Y/O BASURA DENTRO DEL RADIO URBANO",
+      "10-2-2|FUEGO EN PASTIZAL Y/O BASURA CON AMPLIA VEGETACION",
+      "10-2-3|FUEGO EN PASTIZAL Y/O BASURA EN ZONA RURAL",
+      "10-2-4|FUEGO EN PASTIZAL Y/O BASURA EN VERTEDERO O RELLENO SANITARIO",
+      "10-2-5|FUEGO EN ACOPIO DE NEUMATICOS"
+    ],
+    "10-3 (Rescate de personas)": [
+      "10-3-1|RESCATE SIMPLE (ATROPELLO(S), CAIDAS DE NIVEL, PERSONA(S) ENCERRADA(S) EN INMUEBLES O VEHICULOS, HERIDAS CORTO PUNZANTE, CORTE DE ANILLO(S), ETC.)",
+      "10-3-2|RESCATE COMPLEJO (PERSONA(S) ATRAPADA(S) EN ESTRUCTURA O EXTREMIDAD ATRAPADA / EMPALAMIENTO / ELECTROCUCION)",
+      "10-3-3|RESCATE A DESNIVEL (LADERAS, POZOS, RIOS, CANALES, ZANJAS, ALTURA, ETC.)",
+      "10-3-4|RESCATE EN ASCENSOR",
+      "10-3-5|RESCATE EN ALTURA (ANDAMIOS, TORRES DE ALTA TENSION, AZOTEAS, PASARELAS, ETC.)",
+      "10-3-6|RESCATE EN ESPACIO CONFINADO",
+      "10-3-7|RESCATE EN ESTRUCTURA COLAPSADA (DERRUMBE)",
+      "10-3-8|INTENTO DE SUICIDIO",
+      "10-3-9|RESCATE AGRESTE - BUSQUEDA DE PERSONA(S) EXTRAVIADA(S)",
+      "10-3-10|PARO CARDIORRESPIRATORIO (PCR)",
+      "10-3-11|ATENCION A BOMBEROS Y/O FAMILIARES DIRECTOS",
+      "10-3-12|RESCATE POR OCURRENCIA DE DESASTRES NATURALES (DESLIZAMIENTOS DE TIERRA, TERREMOTO, TSUNAMI, ETC.)"
+    ],
+    "10-4 (Rescate vehicular)": [
+      "10-4-1|RESCATE VEHICULAR DE 1 O 2 VEHICULOS MENORES, CON UN MAXIMO DE 3 PERSONAS INVOLUCRADAS",
+      "10-4-2|RESCATE VEHICULAR CON 3 O MAS VEHICULOS INVOLUCRADOS, CON 4 O MAS PERSONAS INVOLUCRADAS / RESCATE VEHICULAR DE TRANSPORTE ESCOLAR O PUBLICO",
+      "10-4-3|RESCATE VEHICULAR PESADO (BUS Y/O CAMION) / DESBARRANCAMIENTO DE 1 O MAS VEHICULOS DE CUALQUIER TIPO",
+      "10-4-4|RESCATE VEHICULAR DE 1 O 2 VEHICULOS MENORES QUE INVOLUCRA FUEGO EN UNO O MAS",
+      "10-4-5|RESCATE VEHICULAR, SIN FUEGO, QUE COMPROMETA A LO MENOS UN VEHICULO A GAS O BIEN DE TRANSPORTE DE GAS, COMBUSTIBLE O HAZMAT"
+    ],
+    "10-5 (Sustancias peligrosas — HAZMAT)": [
+      "10-5-1|FUEGO O DERRAME DE SUSTANCIAS PELIGROSAS, EN CANTIDAD MENOR O IGUAL A 208 KG O LTS, SUSTANCIA PELIGROSA DESCONOCIDA",
+      "10-5-2|FUEGO O DERRAME DE SUSTANCIAS PELIGROSAS, EN CANTIDAD MENOR O IGUAL A 1000 KG O LTS",
+      "10-5-3|FUEGO O DERRAME DE SUSTANCIAS PELIGROSAS, EN CANTIDAD MAYOR O IGUAL A 1000 KG O LTS",
+      "10-5-4|ATAQUE O ATENTADO TERRORISTA DE ORIGEN QBRNE (QUIMICA-BIOLOGICO-RADIACTIVO-NUCLEAR Y/O EXPLOSIVO)",
+      "10-5-5|LLAMADO A SUICIDIO CON PRODUCTOS QUIMICOS"
+    ],
+    "10-6 (Emanacion de gas)": [
+      "10-6-1|EMANACION DE GAS EN CASA HABITACION Y/O LOCAL COMERCIAL SIN GRAN CANTIDAD DE PUBLICO",
+      "10-6-2|EMANACION DE GAS EN EDIFICIO SIN LIMITES DE PISOS O DEPARTAMENTOS",
+      "10-6-3|EMANACION DE GAS EN LOCALES COMERCIALES CON GRAN CANTIDAD DE PUBLICO COMO HOSPITALES, COLEGIOS, MALLS, SUPERMERCADOS Y OTROS",
+      "10-6-4|EMANACION DE GAS EN VIA PUBLICA, ALCANTARILLADO Y SUBTERRANEO",
+      "10-6-5|INTOXICADOS, SUICIDIOS CON GAS, PRESUNTA VICTIMA"
+    ],
+    "10-7 (Llamado electrico)": [
+      "10-7-1|LLAMADO ELECTRICO HABITACIONAL, COMERCIAL O INDUSTRIAL",
+      "10-7-2|LLAMADO ELECTRICO EN CAMARA, POSTE ALUMBRADO PUBLICO, TRANSFORMADOR O SUBESTACION ELECTRICA"
+    ],
+    "10-8 (Alarma / Olor a quemado)": [
+      "10-8-1|ACTIVACION DE ALARMA CONTRA INCENDIO",
+      "10-8-2|LLAMADO NO CLASIFICADO",
+      "10-8-3|OLOR A QUEMADO SIN SABER SU ORIGEN"
+    ],
+    "10-9 (Apoyo)": [
+      "10-9-1|APOYO A SAMU Y/O AMBULANCIA / AUTORIZADO POR 1-6",
+      "10-9-2|APOYO A CARABINEROS DE CHILE, PDI Y/O ARMADA DE CHILE / AUTORIZADO POR 1-6",
+      "10-9-3|APOYO CON CARRO DE BOMBA (BR/BX/BM/B) / AUTORIZADO POR 1-6",
+      "10-9-4|APOYO CON CARRO DE RESCATE (BR/R/RX/B) / AUTORIZADO POR 1-6",
+      "10-9-5|APOYO CON CARRO DE ABASTECIMIENTO (BT/Z) / AUTORIZADO POR 1-6",
+      "10-9-6|APOYO CON CARRO HAZMAT (H) / AUTORIZADO POR 1-6",
+      "10-9-7|APOYO CON CARRO ESCALA MECANICA (BM/RX) / AUTORIZADO POR 1-6",
+      "10-9-8|RESCATE ANIMAL / AUTORIZADO POR 1-6",
+      "10-9-9|APOYO CON MOTOSIERRA / AUTORIZADO POR 1-6",
+      "10-9-10|APOYO CON MOTOBOMBA (INUNDACIONES) / AUTORIZADO POR 1-6",
+      "10-9-11|INSTALACION DE DRIZA / AUTORIZADO POR 1-6",
+      "10-9-12|OTROS SERVICIOS (NO EMERGENCIA) / AUTORIZADO POR 1-6"
+    ],
+    "10-10 (Rebrote)": [
+      "10-10-1|REBROTE DE INCENDIO ESTRUCTURAL",
+      "10-10-2|REBROTE DE INCENDIO FORESTAL, PASTIZALES, ARBUSTOS, BASURA Y/O NEUMATICOS"
+    ],
+    "10-11 (Servicio aereo)": ["10-11|SERVICIO AEREO"],
+    "10-12 (Apoyo a otros cuerpos de bomberos)": [
+      "10-12 A 0-11|APOYO A OTROS CUERPOS DE BOMBEROS (CUBRIR CUARTEL, FUERA DE LA JURISDICCION)",
+      "10-12 A 10-0|APOYO A OTROS CUERPOS DE BOMBEROS A INCENDIO ESTRUCTURAL",
+      "10-12 A 10-1|APOYO A OTROS CUERPOS DE BOMBEROS A INCENDIO VEHICULAR",
+      "10-12 A 10-2|APOYO A OTROS CUERPOS DE BOMBEROS A INCENDIO DE PASTIZALES, ARBUSTOS Y/O BASURA",
+      "10-12 A 10-3|APOYO A OTROS CUERPOS DE BOMBEROS A RESCATE DE PERSONA(S)",
+      "10-12 A 10-4|APOYO A OTROS CUERPOS DE BOMBEROS A RESCATE VEHICULAR",
+      "10-12 A 10-5|APOYO A OTROS CUERPOS DE BOMBEROS A LLAMADO CON SUSTANCIAS PELIGROSAS",
+      "10-12 A 10-6|APOYO A OTROS CUERPOS DE BOMBEROS A EMANACION DE GAS",
+      "10-12 A 10-7|APOYO A OTROS CUERPOS DE BOMBEROS A LLAMADO ELECTRICO",
+      "10-12 A 10-8|APOYO A OTROS CUERPOS DE BOMBEROS A LLAMADO NO CLASIFICADO",
+      "10-12 A 10-9|APOYO A OTROS CUERPOS DE BOMBEROS A OTROS SERVICIOS",
+      "10-12 A 10-10|APOYO A OTROS CUERPOS DE BOMBEROS A REBROTE DE INCENDIO",
+      "10-12 A 10-11|APOYO A OTROS CUERPOS DE BOMBEROS A SERVICIO AEREO",
+      "10-12 A 10-13|APOYO A OTROS CUERPOS DE BOMBEROS A ATENTADO TERRORISTA",
+      "10-12 A 10-14|APOYO A OTROS CUERPOS DE BOMBEROS A ACCIDENTE AEREO",
+      "10-12 A 10-15|APOYO A OTROS CUERPOS DE BOMBEROS A SIMULACRO",
+      "10-12 A 1° ALARMA DE INCENDIO ESTRUCTURAL|APOYO A OTROS CUERPOS DE BOMBEROS A 1° ALARMA DE INCENDIO ESTRUCTURAL",
+      "10-12 A 2° ALARMA DE INCENDIO ESTRUCTURAL|APOYO A OTROS CUERPOS DE BOMBEROS A 2° ALARMA DE INCENDIO ESTRUCTURAL",
+      "10-12 A 3° ALARMA DE INCENDIO ESTRUCTURAL|APOYO A OTROS CUERPOS DE BOMBEROS A 3° ALARMA DE INCENDIO ESTRUCTURAL",
+      "10-12 A ALARMA DE INCENDIO ESTRUCTURAL|APOYO A OTROS CUERPOS DE BOMBEROS A ALARMA DE INCENDIO ESTRUCTURAL",
+      "10-12 A 1° ALARMA DE INCENDIO FORESTAL|APOYO A OTROS CUERPOS DE BOMBEROS A 1° ALARMA DE INCENDIO FORESTAL",
+      "10-12 A 2° ALARMA DE INCENDIO FORESTAL|APOYO A OTROS CUERPOS DE BOMBEROS A 2° ALARMA DE INCENDIO FORESTAL",
+      "10-12 A 3° ALARMA DE INCENDIO FORESTAL|APOYO A OTROS CUERPOS DE BOMBEROS A 3° ALARMA DE INCENDIO FORESTAL",
+      "10-12 A ALARMA DE INCENDIO FORESTAL|APOYO A OTROS CUERPOS DE BOMBEROS A ALARMA DE INCENDIO FORESTAL",
+      "10-12 ACTIVACION DEL SNO|APOYO A OTROS CUERPOS DE BOMBEROS POR ACTIVACION DEL SNO (INCENDIOS, RESCATES, DESASTRES NATURALES, ETC.)"
+    ],
+    "10-13 (Atentado terrorista)": ["10-13|ATENTADO TERRORISTA"],
+    "10-14 (Accidente aereo)": ["10-14|ACCIDENTE AEREO"],
+    "10-15 (Simulacro)": ["10-15|SIMULACRO"],
+    "10-16 (Incendio en embarcacion)": ["10-16|INCENDIOS EN EMBARCACION"]
   };
 
   function llenarActoList() {
     const sel = document.getElementById('acto');
     sel.innerHTML = '<option value="">—</option>';
+    // "Academia" sin optgroup
+    var optAcad = document.createElement('option');
+    optAcad.value = 'Academia';
+    optAcad.textContent = 'Academia';
+    sel.appendChild(optAcad);
+    // Categorias con optgroup
     Object.keys(actosData).forEach(function(k) {
-      const opt = document.createElement('option');
-      opt.value = k;
-      opt.textContent = k;
-      sel.appendChild(opt);
+      if (k === 'Academia') return;
+      var subs = actosData[k];
+      if (subs && subs.length) {
+        var grp = document.createElement('optgroup');
+        grp.label = k;
+        subs.forEach(function(s) {
+          var parts = s.split('|');
+          var opt = document.createElement('option');
+          opt.value = parts[0];
+          opt.textContent = parts[0];
+          if (parts[1]) opt.title = parts[1];
+          grp.appendChild(opt);
+        });
+        sel.appendChild(grp);
+      }
     });
   }
 
-  function actoCambio() {
-    const main = document.getElementById('acto');
-    const sub = document.getElementById('acto-sub');
-    const subs = actosData[main.value];
-    if (subs && subs.length) {
-      sub.innerHTML = '<option value="">—</option>';
-      subs.forEach(function(s) {
-        const opt = document.createElement('option');
-        opt.value = s[0];
-        opt.textContent = s[0] + ': ' + s[1];
-        sub.appendChild(opt);
-      });
-      sub.style.display = '';
-    } else {
-      sub.style.display = 'none';
-    }
-  }
-
   function actoValor() {
-    const main = document.getElementById('acto');
-    const sub = document.getElementById('acto-sub');
-    if (sub.style.display !== 'none' && sub.value) return sub.value;
-    return main.value;
+    return document.getElementById('acto').value;
   }
 
   /* ── Firma digital manual (canvas dibujable) ── */
@@ -707,7 +794,6 @@
     });
 
     llenarActoList();
-    document.getElementById('acto').addEventListener('change', actoCambio);
 
     document.getElementById('firma-label').addEventListener('click', abrirPanelFirma);
 
