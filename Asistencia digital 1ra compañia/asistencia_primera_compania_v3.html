@@ -99,7 +99,19 @@
       min-width: 28px;
       height: 16px;
     }
-    .campo input[type="text"]:focus, .campo input[type="date"]:focus {
+    .campo select {
+      font-size: 10px;
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--gris);
+      background: #fff;
+      border: none;
+      border-bottom: 1px solid var(--linea);
+      outline: none;
+      padding: 1px 2px;
+      min-width: 60px;
+      cursor: pointer;
+    }
+    .campo input[type="text"]:focus, .campo input[type="date"]:focus, .campo select:focus {
       border-bottom: 1.5px solid var(--azul);
       background: #f0f4ff;
     }
@@ -307,7 +319,7 @@
       .no-print { display: none !important; }
       .grilla { gap: 0 6px; }
 
-      .campo input[type="text"], .campo input[type="date"] {
+    .campo input[type="text"], .campo input[type="date"], .campo select {
         border-bottom: 1px solid #999 !important;
         background: transparent !important;
       }
@@ -339,7 +351,7 @@
 
   <!-- CABECERA -->
   <div class="header">
-    <img class="logo-img" src="../img-logo-1cia.jpg"/>
+    <img class="logo-img" src="../Recursos%20graficos_softw/LOGO%20CBC.webp"/>
     <div class="header-center">
       <p><strong>Ayudantía General Cuerpo de Bomberos de Coquimbo</strong></p>
       <p>Registro de Asistencia a Actos de Servicio</p>
@@ -352,7 +364,7 @@
 
   <!-- CAMPOS -->
   <div class="campos-top">
-    <div class="campo"><label>Acto:</label><input type="text" id="acto" list="acto-list" placeholder="10-0, 10-4…"/><datalist id="acto-list"><option value="10-0 (Incendio estructural)"><option value="10-4 (Rescate vehicular)"></datalist></div>
+    <div class="campo"><label>Acto:</label><select id="acto"><option value="">—</option><option value="10-0 (Incendio estructural)">10-0 (Incendio estructural)</option><option value="10-4 (Rescate vehicular)">10-4 (Rescate vehicular)</option></select></div>
     <div class="campo"><label>Correlativo:</label><input type="text" id="corr" placeholder="______"/></div>
     <div class="campo"><label>Unidad:</label><input type="text" id="unidad" list="unidad-list" placeholder="J-1, RX-1, B-1…"/><datalist id="unidad-list"><option value="J-1"><option value="RX-1"><option value="B-1"></datalist></div>
     <div class="campo"><label>Fecha:</label><input type="date" id="fecha"/></div>
