@@ -418,5 +418,12 @@
     "seccion": "aspirantes",
     "activo": true,
     "subseccion": ""
+  },
+  {
+    "nombre": "Vicente",
+    "cargo": "Brigadier",
+    "seccion": "brigadieres",
+    "activo": true,
+    "subseccion": ""
   }
 ]
