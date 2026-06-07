@@ -201,6 +201,7 @@
       padding: 1px 2px; min-width: 130px; cursor: pointer;
     }
     select.obac-select:focus { border-bottom: 1.5px solid var(--azul); background: #f0f4ff; }
+    select.obac-select option { background: #fff; color: var(--gris); font-size: 10px; }
 
     /* ── Modal firma ── */
     .modal-overlay {
@@ -515,6 +516,7 @@
     voluntarios.forEach(function(v) {
       const opt = document.createElement('option');
       opt.value = v.nombre;
+      opt.textContent = v.nombre;
       sel.appendChild(opt);
     });
   }
