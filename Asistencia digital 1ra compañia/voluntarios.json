@@ -143,7 +143,7 @@
     "nombre": "Felipe Andrés Vivanco Gallardo",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true,
+    "activo": false,
     "subseccion": ""
   },
   {
@@ -220,7 +220,7 @@
     "nombre": "Bárbara Paz Sierpe Robinson",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true,
+    "activo": false,
     "subseccion": ""
   },
   {
@@ -255,7 +255,7 @@
     "nombre": "Lucky George Montecinos Zepeda",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true,
+    "activo": false,
     "subseccion": ""
   },
   {
@@ -276,7 +276,7 @@
     "nombre": "Jubitza Alessandra Albanez Moreno",
     "cargo": "Voluntario(a)",
     "seccion": "voluntarios",
-    "activo": true,
+    "activo": false,
     "subseccion": ""
   },
   {
