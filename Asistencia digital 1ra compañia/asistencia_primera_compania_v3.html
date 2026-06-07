@@ -130,7 +130,7 @@
     /* ── Grilla 4 columnas ── */
     .grilla {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: repeat(5, 1fr);
       gap: 0 10px;
       margin-bottom: 7px;
     }
@@ -465,6 +465,7 @@
     const mmhh = voluntarios.filter(function(v) { return v.cargo === 'M.M.H.H.'; });
     const voluntas = voluntarios.filter(function(v) { return v.seccion === 'voluntarios' && v.cargo !== 'M.M.H.H.'; });
     const aspirantes = voluntarios.filter(function(v) { return v.seccion === 'aspirantes'; });
+    const brigadieres = voluntarios.filter(function(v) { return v.seccion === 'brigadieres'; });
 
     const container = document.getElementById('asistencia-container');
     container.innerHTML = '';
@@ -494,14 +495,20 @@
       { titulo: 'Voluntarios', clase: 'col-titulo', personas: voluntas.slice(0, mitad) },
     ]));
 
-    // Col 4: Voluntarios (segunda mitad) + Aspirantes
-    const gruposCol4 = [
+    // Col 4: Voluntarios (segunda mitad)
+    grilla.appendChild(crearColumna([
       { titulo: 'Voluntarios', clase: 'col-titulo', personas: voluntas.slice(mitad) },
-    ];
+    ]));
+
+    // Col 5: Aspirantes + Brigadieres
+    const gruposCol5 = [];
     if (aspirantes.length > 0) {
-      gruposCol4.push({ titulo: 'Aspirantes', clase: 'col-titulo', personas: aspirantes });
+      gruposCol5.push({ titulo: 'Aspirantes', clase: 'col-titulo', personas: aspirantes });
     }
-    grilla.appendChild(crearColumna(gruposCol4));
+    if (brigadieres.length > 0) {
+      gruposCol5.push({ titulo: 'Brigadieres', clase: 'col-titulo', personas: brigadieres });
+    }
+    grilla.appendChild(crearColumna(gruposCol5));
 
     container.appendChild(grilla);
     actualizarTotales();
