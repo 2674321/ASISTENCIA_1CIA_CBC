@@ -13,7 +13,7 @@
   <link rel="apple-touch-icon" href="../img-logo-1cia.jpg"/>
   <title>Asistencia – Primera Compañía Bomba Chile</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Source+Sans+3:wght@400;600&family=Dancing+Script:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Source+Sans+3:wght@400;600&display=swap');
 
     :root {
       --rojo:  #c0392b;
@@ -197,11 +197,36 @@
     select.obac-select {
       border: none; border-bottom: 1px solid var(--linea);
       outline: none; font-family: 'Source Sans 3', sans-serif;
-      font-size: 10px; color: var(--gris); background: transparent;
-      padding: 1px 2px; min-width: 120px; height: 16px;
-      cursor: pointer;
+      font-size: 10px; color: var(--gris); background: #fff;
+      padding: 1px 2px; min-width: 130px; cursor: pointer;
     }
     select.obac-select:focus { border-bottom: 1.5px solid var(--azul); background: #f0f4ff; }
+
+    /* ── Modal firma ── */
+    .modal-overlay {
+      position: fixed; z-index: 999;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.35);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-box {
+      background: #fff; border-radius: 10px;
+      padding: 20px 16px 16px; text-align: center;
+      width: 320px; max-width: 90vw;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    }
+    .modal-tit { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .modal-sub { font-size: 11px; color: #c0392b; margin-bottom: 10px; font-weight: 600; }
+    #canvas-firma-draw {
+      display: block; margin: 0 auto;
+      width: 300px; height: 150px;
+      border: 1px solid #aaa; border-radius: 6px;
+      background: #fff; touch-action: none;
+    }
+    .modal-botones { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
+    .modal-botones .btn { font-size: 12px; padding: 5px 18px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; }
+    .btn-reset { background: #e0e0e0; color: #333; }
+    .btn-excel { background: #c0392b; color: #fff; }
 
     /* ── Firma ── */
     .firma-area {
@@ -210,10 +235,6 @@
     }
     .firma-linea { width: 160px; border-top: 1px solid var(--gris); margin-bottom: 2px; }
     .firma-label { font-size: 9px; font-weight: 600; }
-    canvas#firma-canvas {
-      display: block; width: 160px; height: 36px;
-      margin-bottom: 1px;
-    }
 
     /* ── Leyenda ── */
     .leyenda {
@@ -299,7 +320,6 @@
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
-      canvas#firma-canvas { width: 160px; height: 36px; }
     }
   </style>
 </head>
@@ -369,9 +389,21 @@
 
   <!-- FIRMA -->
   <div class="firma-area">
-    <canvas id="firma-canvas"></canvas>
     <div class="firma-linea"></div>
-    <div class="firma-label">Firma OBAC</div>
+    <div class="firma-label" id="firma-label" style="cursor:pointer">Firma OBAC</div>
+  </div>
+
+  <!-- Modal firma digital -->
+  <div id="firma-modal" class="modal-overlay no-print" style="display:none">
+    <div class="modal-box">
+      <div class="modal-tit">Firma digital</div>
+      <div class="modal-sub" id="modal-obac-name"></div>
+      <canvas id="canvas-firma-draw" width="300" height="150"></canvas>
+      <div class="modal-botones">
+        <button class="btn btn-reset" onclick="limpiarCanvasFirma()">Limpiar</button>
+        <button class="btn btn-excel" onclick="aceptarFirma()">Aceptar</button>
+      </div>
+    </div>
   </div>
 
   <!-- LEYENDA -->
@@ -487,38 +519,72 @@
     });
   }
 
-  function dibujarFirma(nombre) {
-    const canvas = document.getElementById('firma-canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = 320; canvas.height = 72;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  /* ── Firma digital manual (canvas dibujable) ── */
+  var canvasDraw = null, ctxDraw = null;
+  var drawing = false;
 
-    if (!nombre) return;
+  function abrirPanelFirma() {
+    var sel = document.getElementById('obac');
+    var nombre = sel.value;
+    if (!nombre) { alert('Seleccione un OBAC primero.'); return; }
+    document.getElementById('modal-obac-name').textContent = nombre;
+    document.getElementById('firma-modal').style.display = 'flex';
+    canvasDraw = document.getElementById('canvas-firma-draw');
+    ctxDraw = canvasDraw.getContext('2d');
+    ctxDraw.fillStyle = '#fff';
+    ctxDraw.fillRect(0, 0, canvasDraw.width, canvasDraw.height);
+    ctxDraw.lineWidth = 2;
+    ctxDraw.lineCap = 'round';
+    ctxDraw.strokeStyle = '#1a2a6c';
+  }
 
-    // Fondo blanco
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  function cerrarPanelFirma() {
+    document.getElementById('firma-modal').style.display = 'none';
+    canvasDraw = ctxDraw = null;
+  }
 
-    // Firma manuscrita simulada
-    ctx.font = '48px "Dancing Script", cursive';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
+  function limpiarCanvasFirma() {
+    if (!ctxDraw || !canvasDraw) return;
+    ctxDraw.fillStyle = '#fff';
+    ctxDraw.fillRect(0, 0, canvasDraw.width, canvasDraw.height);
+  }
 
-    // Sombra sutil
-    ctx.fillStyle = 'rgba(0,0,0,0.08)';
-    ctx.fillText(nombre, canvas.width/2 + 1, canvas.height/2 + 1);
+  function aceptarFirma() {
+    cerrarPanelFirma();
+  }
 
-    // Texto principal
-    ctx.fillStyle = '#1a2a6c';
-    ctx.fillText(nombre, canvas.width/2, canvas.height/2);
+  function iniciarDibujo(e) {
+    if (!ctxDraw) return;
+    drawing = true;
+    var pos = obtenerPos(e);
+    ctxDraw.beginPath();
+    ctxDraw.moveTo(pos.x, pos.y);
+    e.preventDefault();
+  }
 
-    // Línea decorativa bajo la firma
-    ctx.strokeStyle = 'rgba(26,42,108,0.25)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(canvas.width/2 - ctx.measureText(nombre).width/2 + 10, canvas.height/2 + 22);
-    ctx.lineTo(canvas.width/2 + ctx.measureText(nombre).width/2 - 10, canvas.height/2 + 22);
-    ctx.stroke();
+  function dibujar(e) {
+    if (!drawing || !ctxDraw) return;
+    var pos = obtenerPos(e);
+    ctxDraw.lineTo(pos.x, pos.y);
+    ctxDraw.stroke();
+    e.preventDefault();
+  }
+
+  function detenerDibujo() {
+    drawing = false;
+  }
+
+  function obtenerPos(e) {
+    var rect = canvasDraw.getBoundingClientRect();
+    var x, y;
+    if (e.touches) {
+      x = (e.touches[0].clientX - rect.left) * (canvasDraw.width / rect.width);
+      y = (e.touches[0].clientY - rect.top) * (canvasDraw.height / rect.height);
+    } else {
+      x = (e.clientX - rect.left) * (canvasDraw.width / rect.width);
+      y = (e.clientY - rect.top) * (canvasDraw.height / rect.height);
+    }
+    return { x: x, y: y };
   }
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -551,9 +617,19 @@
       actualizarTotales();
     });
 
-    document.getElementById('obac').addEventListener('change', function() {
-      dibujarFirma(this.value);
+    document.getElementById('firma-label').addEventListener('click', abrirPanelFirma);
+
+    // Eventos del canvas modal
+    document.addEventListener('mousedown', function(e) {
+      if (e.target && e.target.id === 'canvas-firma-draw') iniciarDibujo(e);
     });
+    document.addEventListener('mousemove', dibujar);
+    document.addEventListener('mouseup', detenerDibujo);
+    document.addEventListener('touchstart', function(e) {
+      if (e.target && e.target.id === 'canvas-firma-draw') iniciarDibujo(e);
+    }, {passive: false});
+    document.addEventListener('touchmove', dibujar, {passive: false});
+    document.addEventListener('touchend', detenerDibujo);
 
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').then(function(reg) {
